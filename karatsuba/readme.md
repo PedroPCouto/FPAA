@@ -1,40 +1,56 @@
-📘 Multiplicação de Inteiros com o Algoritmo de Karatsuba
+# Multiplicação com Karatsuba
 
-## 🔍 O que é o algoritmo de Karatsuba?
+Este repositório implementa o **algoritmo de Karatsuba** para multiplicação eficiente de números inteiros grandes.  
 
-O algoritmo de **Karatsuba** é uma técnica de multiplicação rápida para números inteiros grandes, desenvolvida por Anatolii Karatsuba em 1960.  
+## 🔢 O algoritmo de Karatsuba
 
-A multiplicação tradicional de dois números com \\( n \\) dígitos tem complexidade \\( O(n^2) \\). Karatsuba conseguiu reduzir isso para aproximadamente \\( O(n^{\\\\log_2 3}) \\), ou seja, cerca de \\( O(n^{1.585}) \\).  
+A multiplicação tradicional entre números inteiros é feita em tempo O(n^2), onde n é o número de dígitos. O algoritmo de **Karatsuba** reduz essa complexidade para aproximadamente O(n^{log_2 3}) ≈ O(n^{1.585}), tornando a multiplicação entre grandes números bem mais rápida.
 
-A ideia principal é **dividir os números em metades** e evitar multiplicações desnecessárias através de um truque algébrico.  
+A ideia principal é **dividir para conquistar**:
 
-Se temos dois números:  
+Dado dois números u e v, com n dígitos:
+1. Divide cada número em duas partes:
+   - u = p * 10^m + q
+   - v = r * 10^m + s
+   onde m = floor(n/2).
+2. Calcula três produtos menores:
+   - A = p * r
+   - B = q * s
+   - C = (p+q)(r+s) - A - B
+3. Combina os resultados:
 
-\\[
-u = p \\\\cdot 10^m + q \\\\quad \\\\quad v = r \\\\cdot 10^m + s
-\\]
+    u * v = A * 10^(2m) + C * 10^m + B
 
-Karatsuba observa que:  
-
-\\[
-u \\\\cdot v = p \\\\cdot r \\\\cdot 10^{2m} + (p \\\\cdot s + q \\\\cdot r) \\\\cdot 10^m + q \\\\cdot s
-\\]
-
-Isso permite calcular o produto usando apenas **3 multiplicações diretas** ao invés de 4, reduzindo o custo computacional.
+Dessa forma, em vez de 4 multiplicações grandes, fazemos apenas **3**, o que reduz bastante o custo quando os números são grandes.
 
 ---
 
-## 🖥️ Estrutura do Script
+## 🚀 Como executar o script
 
-O script implementa a multiplicação de dois inteiros utilizando Karatsuba. Ele recebe **dois números inteiros como argumentos via terminal**, multiplica-os e imprime o resultado.
+### 1. Clonar o repositório
+```bash
+git clone https://github.com/SEU_USUARIO/karatsuba-python.git
+cd karatsuba-python
+```
 
-```python
-def karatsuba(u, v):
-    n = max(len(str(u)), len(str(v)))
-    if n == 1:
-        return u * v
-    half = n // 2
-    p, q = divmod(u, 10**half)
-    r, s = divmod(v, 10**half)
+### 2. Executar com Python
+Este script não requer bibliotecas externas. Basta rodar:
 
-    return p * r * 10**n + (p * s + q * r) * 10**half + q * s
+```bash
+python3 script.py <numero1> <numero2>
+```
+
+### 📌 Exemplo
+```bash
+python3 script.py 12345 6789
+```
+
+Saída esperada:
+```
+12345 * 6789 = 83810205
+```
+
+
+
+
+
