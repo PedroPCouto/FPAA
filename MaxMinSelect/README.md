@@ -97,27 +97,3 @@ Portanto, caso 1 do Teorema Mestre:
 - `T(n) = Θ(n^p) = Θ(n)`.
 
 Conclusão: a complexidade temporal é linear, `Θ(n)`.
-
-## Estrutura do repositório
-
-- `main.py`: implementação do algoritmo.
-- `README.md`: este documento.
-- `assets/` (opcional, para o ponto extra): figuras do diagrama da árvore de recursão.
-
-## Ponto extra: diagrama (instruções)
-
-- Use draw.io, Lucidchart ou PowerPoint para desenhar:
-  - Raiz com o problema de tamanho `n`.
-  - Dois filhos cada um com `n/2`, recursivamente até chegar em 1 ou 2 elementos.
-  - Em cada aresta/nível, anote que a combinação custa 2 comparações por subproblema.
-  - Mostre os níveis até `log2 n`.
-- Exporte como `PNG` e salve em `assets/recursao_maxmin.png`.
-- Referencie no README com:
-  ```markdown
-  ![Árvore de recursão do MaxMin](assets/recursao_maxmin.png)
-  ```
-
-## Referências
-
-- Material do curso (AULA 01 – Análise de complexidade de algoritmos).
-- Exemplos de estrutura de README: repositório do professor.
